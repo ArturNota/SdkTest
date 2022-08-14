@@ -1,12 +1,21 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+using System.Drawing.Imaging;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 using NUnit.Framework;
+using System.Linq;
 using System.Configuration;
+using OpenQA.Selenium.Remote;
+using System.Diagnostics;
 using NotaTest.IMS.PageObjects;
 using NotaTest.IMS.Login;
-using TestProject.OpenSDK.Drivers.Web;
-using ChromeDriver = TestProject.OpenSDK.Drivers.Web.ChromeDriver;
 
 namespace IMS.Tests.Task1_13
 {
@@ -22,7 +31,7 @@ namespace IMS.Tests.Task1_13
         private LoginObjects loginObjects;
         private GoTo goTo;
         private IncidentPage incidentPage;
-        //public string Token = "5gSSrfTE2dPKdwFS-FnFlpEOZBR2spiRF7OeXB0-zNM1";
+        
 
 
 
@@ -32,8 +41,7 @@ namespace IMS.Tests.Task1_13
         public void Test()
         {
             
-            //driver = new ChromeDriver(null, Token);
-            
+           
             //wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3000));
             driver.Manage().Window.Maximize();
             loginObjects = new LoginObjects(driver);
