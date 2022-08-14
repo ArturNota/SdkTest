@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -9,7 +11,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
-using NUnit.Framework;
 using System.Linq;
 using System.Configuration;
 using OpenQA.Selenium.Remote;
@@ -18,9 +19,11 @@ using NotaTest.IMS.PageObjects;
 using NotaTest.IMS.Login;
 using System.Threading;
 using TechTalk.SpecFlow;
-using AventStack.ExtentReports.Reporter;
-using AventStack.ExtentReports;
+using RelevantCodes.ExtentReports;
+
+
 using NotaTest;
+
 
 namespace IMS.Tests.Task1_22
 {
@@ -37,10 +40,22 @@ namespace IMS.Tests.Task1_22
 
 
 
-        [SetUp]
-
+        
+        [OneTimeSetUp]
         public void Test()
         {
+            string path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            string actualPath = path.Substring(0, path.LastIndexOf("bin"));
+            string projectPath = new Uri(actualPath).LocalPath;
+            string reportPath = projectPath + "Reports\\MyOwnReport.html";
+
+            extent = new ExtentReports(reportPath, false);
+            extent
+            .AddSystemInfo("Host Name", "Artur")
+            .AddSystemInfo("Environment", "QA")
+            .AddSystemInfo("User Name", "Artur G");
+            extent.LoadConfig(projectPath + "extent-config.xml");
+
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3000));
             driver.Manage().Window.Maximize();
@@ -51,24 +66,16 @@ namespace IMS.Tests.Task1_22
 
         }
 
-        [OneTimeSetUp]
-        public void ExtentStart()
-        {
 
-            extent = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\nilidalg\source\repos\NotaTest\NotaTest\Reports07\12\index.html");
-
-            extent.AttachReporter(htmlReporter);
-
-        }
-
+        
+            
 
         [Test]
         public void TestTask1_22()
         {
-            test = null;
-           
-            test = extent.CreateTest("Тест раздела задач").Info("Проверка прав");
+            test = extent.StartTest("ПЖ");
+            
+            test.Log(LogStatus.Pass, "ура");
 
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLoginOperReg();
@@ -77,24 +84,34 @@ namespace IMS.Tests.Task1_22
             
 
             goTo.IncidentPageTask(ConfigurationManager.AppSettings["IncidentPageForTask"]);
-            System.Threading.Thread.Sleep(1000);
-            test.Log(Status.Pass, "Test Pass");
-
+            test.Log(LogStatus.Pass, "Assert Fail as condition is False");
 
 
         }
 
         [TearDown]
-        public void stop()
+        public void GetResult()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stackTrace = "<pre>" + TestContext.CurrentContext.Result.StackTrace + "</pre>";
+            var errorMessage = TestContext.CurrentContext.Result.Message;
+
+            if (status == TestStatus.Failed)
+            {
+                test.Log(LogStatus.Fail, stackTrace + errorMessage);
+            }
+            extent.EndTest(test);
             driver.Quit();
             driver = null;
+
         }
+       
 
         [OneTimeTearDown]
         public void ExtentClose()
         {
             extent.Flush();
+            extent.Close();
         }
 
     }

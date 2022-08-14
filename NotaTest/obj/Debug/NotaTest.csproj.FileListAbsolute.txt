@@ -13,12 +13,10 @@ C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\NotaTest.dll.config
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\NotaTest.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\NotaTest.pdb
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\AngleSharp.dll
-C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Appium.Net.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\BoDi.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Castle.Core.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Crc32C.NET.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\DnsClient.dll
-C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\ExtentReports.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Gherkin.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -89,6 +87,7 @@ C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Newtonsoft.Json.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\NLog.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\nunit.framework.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\RazorEngine.NetCore.dll
+C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\RelevantCodes.ExtentReports.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\RestSharp.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\SeleniumExtras.PageObjects.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\SharpCompress.dll
@@ -113,13 +112,10 @@ C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\System.Text.Encodings
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\System.ValueTuple.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\TechTalk.SpecFlow.dll
-C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\TestProject.OpenSDK.dll
-C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\TestProject.OpenSDK.SpecFlowPlugin.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\WebDriver.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\WebDriver.Support.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\xunit.abstractions.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\AngleSharp.xml
-C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Appium.Net.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\BoDi.pdb
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Castle.Core.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\Crc32C.NET.xml
@@ -214,9 +210,11 @@ C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\System.Threading.Task
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\System.ValueTuple.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\TechTalk.SpecFlow.pdb
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\TechTalk.SpecFlow.xml
+C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\WebDriver.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\WebDriver.Support.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\bin\Debug\xunit.abstractions.xml
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\obj\Debug\NotaTest.csproj.CoreCompileInputs.cache
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\obj\Debug\NotaTest.csproj.CopyComplete
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\obj\Debug\NotaTest.dll
 C:\Users\nilidalg\source\repos\NotaTest\NotaTest\obj\Debug\NotaTest.pdb
+C:\Users\nilidalg\source\repos\NotaTest\NotaTest\obj\Debug\NotaTest.csproj.AssemblyReference.cache
