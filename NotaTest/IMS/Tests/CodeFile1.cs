@@ -26,27 +26,21 @@ namespace ExtentReportsDemo
 
             extent = new ExtentReports(reportPath, true);
             extent
-            .AddSystemInfo("Host Name", "Krishna")
+            .AddSystemInfo("Host Name", "None")
             .AddSystemInfo("Environment", "QA")
-            .AddSystemInfo("User Name", "Krishna Sakinala");
+            .AddSystemInfo("User Name", "None");
             extent.LoadConfig(projectPath + "extent-config.xml");
         }
 
         [Test]
         public void DemoReportPass()
         {
-            test = extent.StartTest("DemoReportPass");
+            test = extent.StartTest("First Case");
             Assert.IsTrue(true);
             test.Log(LogStatus.Pass, "Assert Pass as condition is True");
         }
 
-        [Test]
-        public void DemoReportFail()
-        {
-            test = extent.StartTest("DemoReportFail");
-            Assert.IsTrue(false);
-            test.Log(LogStatus.Pass, "Assert Fail as condition is False");
-        }
+        
 
         [TearDown]
         public void GetResult()

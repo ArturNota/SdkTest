@@ -56,7 +56,7 @@ namespace NotaTest.IMS.Login
             
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Wa}597g9HH9e\"}Y;';", element);
+            jse.ExecuteScript("arguments[0].value='Wa}597g9HH9e\"}Y;99';", element);
         }
 
 
@@ -83,7 +83,7 @@ namespace NotaTest.IMS.Login
 
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n3';", element);
+            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n3!';", element);
         }
 
 
@@ -100,7 +100,7 @@ namespace NotaTest.IMS.Login
 
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n2';", element);
+            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n2!';", element);
         }
 
         public void InputLoginOperReg()
@@ -116,7 +116,7 @@ namespace NotaTest.IMS.Login
 
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n3';", element);
+            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n3!';", element);
         }
 
         public void InputLoginSois()
@@ -132,7 +132,7 @@ namespace NotaTest.IMS.Login
 
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n6';", element);
+            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n6!';", element);
         }
 
 
