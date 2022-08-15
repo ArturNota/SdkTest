@@ -73,9 +73,9 @@ namespace IMS.Tests.Task1_22
         [Test]
         public void TestTask1_22()
         {
-            test = extent.StartTest("ПЖ");
+            test = extent.StartTest("Новый тест");
             
-            test.Log(LogStatus.Pass, "ура");
+            test.Log(LogStatus.Pass, "пройден");
 
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLoginOperReg();
@@ -84,7 +84,7 @@ namespace IMS.Tests.Task1_22
             
 
             goTo.IncidentPageTask(ConfigurationManager.AppSettings["IncidentPageForTask"]);
-            test.Log(LogStatus.Pass, "Assert Fail as condition is False");
+            test.Log(LogStatus.Pass, "все гуд");
 
 
         }

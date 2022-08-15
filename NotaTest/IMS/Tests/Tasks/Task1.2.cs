@@ -1,10 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Text;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
-using System.Drawing.Imaging;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -17,6 +12,7 @@ using System.Diagnostics;
 using NotaTest.IMS.PageObjects;
 using NotaTest.IMS.Login;
 using System.Threading;
+using RelevantCodes.ExtentReports;
 
 namespace IMS.Tests.Task1_2
 {
@@ -27,7 +23,8 @@ namespace IMS.Tests.Task1_2
         private LoginObjects loginObjects;
         private GoTo goTo;
         private IncidentPage incidentPage;
-
+        public static ExtentTest test;
+        public static ExtentReports extent;
 
 
 
@@ -35,6 +32,18 @@ namespace IMS.Tests.Task1_2
 
         public void Test()
         {
+            string path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            string actualPath = path.Substring(0, path.LastIndexOf("bin"));
+            string projectPath = new Uri(actualPath).LocalPath;
+            string reportPath = projectPath + "Reports\\MyOwnReport.html";
+
+            extent = new ExtentReports(reportPath, false);
+            extent
+            .AddSystemInfo("Host Name", "Artur")
+            .AddSystemInfo("Environment", "QA")
+            .AddSystemInfo("User Name", "Artur G");
+            extent.LoadConfig(projectPath + "extent-config.xml");
+
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3000));
             driver.Manage().Window.Maximize();
@@ -48,7 +57,7 @@ namespace IMS.Tests.Task1_2
         [Test]
         public void TestTask1_2()
         {
-
+            test = extent.StartTest("Создание новой задачи");
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLogin(ConfigurationManager.AppSettings["Login"]);
             loginObjects.InputPwd(ConfigurationManager.AppSettings["Pwd"]);
@@ -79,13 +88,31 @@ namespace IMS.Tests.Task1_2
 
 
             incidentPage.SaveTaskWithOutFrame();
+            test.Log(LogStatus.Pass, "Тест пройден успешно");
         }
 
         [TearDown]
-        public void stop()
+        public void GetResult()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stackTrace = "<pre>" + TestContext.CurrentContext.Result.StackTrace + "</pre>";
+            var errorMessage = TestContext.CurrentContext.Result.Message;
+
+            if (status == TestStatus.Failed)
+            {
+                test.Log(LogStatus.Fail, stackTrace + errorMessage);
+            }
+            extent.EndTest(test);
             driver.Quit();
             driver = null;
+
+        }
+
+        [OneTimeTearDown]
+        public void ExtentClose()
+        {
+            extent.Flush();
+            extent.Close();
         }
     }
 }
