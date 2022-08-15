@@ -496,7 +496,6 @@
     <Compile Include="IMS\PageObjects\GoTo.cs" />
     <Compile Include="IMS\PageObjects\IncidentPage.cs" />
     <Compile Include="IMS\Tests\CodeFile1.cs" />
-    <Compile Include="IMS\Tests\CodeFile2.cs" />
     <Compile Include="IMS\Tests\Incident\Incident1.1.cs" />
     <Compile Include="IMS\Tests\Incident\Incident1.2.cs" />
     <Compile Include="IMS\Tests\Incident\Incident1.3.cs" />
@@ -505,6 +504,22 @@
     <Compile Include="IMS\Tests\Incident\Incident1.6.cs" />
     <Compile Include="IMS\Tests\Incident\Incident1.7.cs" />
     <Compile Include="IMS\Tests\Incident\Incident1.8.cs" />
+    <Compile Include="IMS\Tests\Incident\incident2.1.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.2.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.3.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.4.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.5.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.6.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.7.cs.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.8.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.9.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident2.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.1.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.2.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.3.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.4.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.5.cs" />
+    <Compile Include="IMS\Tests\Incident\Incident3.cs" />
     <Compile Include="IMS\Tests\Login\DefaultLogin.cs" />
     <Compile Include="IMS\Tests\Login\Login.cs" />
     <Compile Include="IMS\Tests\Login\Login1.1.cs" />
@@ -546,11 +561,19 @@
     <Compile Include="IMS\Tests\Tasks\Task1.32.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.4.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.40.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.42.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.43.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.44.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.45.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.46.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.47.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.48.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.5.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.6.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.7.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.8.cs" />
     <Compile Include="IMS\Tests\Tasks\Task1.9.cs" />
+    <Compile Include="IMS\Tests\Tasks\Task1.41.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
