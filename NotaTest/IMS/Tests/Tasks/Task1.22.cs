@@ -73,9 +73,7 @@ namespace IMS.Tests.Task1_22
         [Test]
         public void TestTask1_22()
         {
-            test = extent.StartTest("Новый тест");
-            
-            test.Log(LogStatus.Pass, "пройден");
+            test = extent.StartTest("Открытие окна задачи со страницы инцидента");
 
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLoginOperReg();
@@ -84,7 +82,7 @@ namespace IMS.Tests.Task1_22
             
 
             goTo.IncidentPageTask(ConfigurationManager.AppSettings["IncidentPageForTask"]);
-            test.Log(LogStatus.Pass, "все гуд");
+            test.Log(LogStatus.Pass, "Тест пройден успешно");
 
 
         }

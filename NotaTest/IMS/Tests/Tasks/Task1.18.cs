@@ -17,6 +17,8 @@ using System.Diagnostics;
 using NotaTest.IMS.PageObjects;
 using NotaTest.IMS.Login;
 using System.Threading;
+using RelevantCodes.ExtentReports;
+using NUnit.Framework.Interfaces;
 
 namespace IMS.Tests.Task1_18
 {
@@ -27,7 +29,8 @@ namespace IMS.Tests.Task1_18
         private LoginObjects loginObjects;
         private GoTo goTo;
         private IncidentPage incidentPage;
-
+        public static ExtentTest test;
+        public static ExtentReports extent;
 
 
 
@@ -35,6 +38,19 @@ namespace IMS.Tests.Task1_18
 
         public void Test()
         {
+
+            string path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            string actualPath = path.Substring(0, path.LastIndexOf("bin"));
+            string projectPath = new Uri(actualPath).LocalPath;
+            string reportPath = projectPath + "Reports\\MyOwnReport.html";
+
+            extent = new ExtentReports(reportPath, false);
+            extent
+            .AddSystemInfo("Host Name", "Artur")
+            .AddSystemInfo("Environment", "QA")
+            .AddSystemInfo("User Name", "Artur G");
+            extent.LoadConfig(projectPath + "extent-config.xml");
+
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3000));
             driver.Manage().Window.Maximize();
@@ -48,14 +64,14 @@ namespace IMS.Tests.Task1_18
         [Test]
         public void TestTask1_18()
         {
-
+            test = extent.StartTest("Запуск окна \"Новая задача\"");
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLoginOperReg();
             loginObjects.InputPwdOperReg();
             loginObjects.LoginButton();
             goTo.IncidentPageTask(ConfigurationManager.AppSettings["IncidentPageForTask"]);
             System.Threading.Thread.Sleep(10000);
-
+            test.Log(LogStatus.Pass, "Тест пройден успешно");
 
 
 
@@ -64,10 +80,27 @@ namespace IMS.Tests.Task1_18
         }
 
         [TearDown]
-        public void stop()
+        public void GetResult()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stackTrace = "<pre>" + TestContext.CurrentContext.Result.StackTrace + "</pre>";
+            var errorMessage = TestContext.CurrentContext.Result.Message;
+
+            if (status == TestStatus.Failed)
+            {
+                test.Log(LogStatus.Fail, stackTrace + errorMessage);
+            }
+            extent.EndTest(test);
             driver.Quit();
             driver = null;
+
+        }
+
+        [OneTimeTearDown]
+        public void ExtentClose()
+        {
+            extent.Flush();
+            extent.Close();
         }
     }
 }

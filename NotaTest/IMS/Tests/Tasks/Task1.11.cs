@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using System.IO;
 using System.Text;
@@ -19,8 +19,8 @@ using NotaTest.IMS.PageObjects;
 using NotaTest.IMS.Login;
 using System.Threading;
 using TechTalk.SpecFlow;
-using AventStack.ExtentReports.Reporter;
-using AventStack.ExtentReports;
+using RelevantCodes.ExtentReports;
+using NUnit.Framework.Interfaces;
 using NotaTest;
 
 namespace IMS.Tests.Task1_11
@@ -43,6 +43,18 @@ namespace IMS.Tests.Task1_11
 
         public void Test()
         {
+            string path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            string actualPath = path.Substring(0, path.LastIndexOf("bin"));
+            string projectPath = new Uri(actualPath).LocalPath;
+            string reportPath = projectPath + "Reports\\MyOwnReport.html";
+
+            extent = new ExtentReports(reportPath, false);
+            extent
+            .AddSystemInfo("Host Name", "Artur")
+            .AddSystemInfo("Environment", "QA")
+            .AddSystemInfo("User Name", "Artur G");
+            extent.LoadConfig(projectPath + "extent-config.xml");
+
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3000));
             driver.Manage().Window.Maximize();
@@ -52,22 +64,11 @@ namespace IMS.Tests.Task1_11
 
 
         }
-        [OneTimeSetUp]
-        public void ExtentStart()
-        {
-
-            extent = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\nilidalg\source\repos\NotaTest\NotaTest\Reports07\12\index.html");
-            extent.AttachReporter(htmlReporter);
-            extent.StartedReporterList.Add(htmlReporter);
-        }
-
-        [TestCase]
+        
+        [Test]
         public void TestTask1_11()
         {
-            test = null;
-
-            test = extent.CreateTest("Nota").Info("еве");
+            test = extent.StartTest("Создание новой задачи + еще одна задача");
 
             goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
             loginObjects.InputLoginOper();
@@ -79,7 +80,7 @@ namespace IMS.Tests.Task1_11
             //incidentPage.CreateTask();
             //incidentPage.NameOfTask();
             //incidentPage.SaveTaskWithOutFrame();
-            test.Log(Status.Pass, "Test Pass");
+            test.Log(LogStatus.Pass, "Тест пройден успешно");
 
 
             System.Threading.Thread.Sleep(10000);
@@ -88,43 +89,32 @@ namespace IMS.Tests.Task1_11
 
         }
 
-        [TestCase]
-        public void TestTask1_1111()
+
+
+
+
+        [TearDown]
+        public void GetResult()
         {
-            test = null;
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stackTrace = "<pre>" + TestContext.CurrentContext.Result.StackTrace + "</pre>";
+            var errorMessage = TestContext.CurrentContext.Result.Message;
 
-            test = extent.CreateTest("Nota2").Info("еве");
-
-            goTo.LoginPage(ConfigurationManager.AppSettings["LoginPage"]);
-            loginObjects.InputLoginOper();
-            loginObjects.InputPwdOper();
-            loginObjects.LoginButton();
-            goTo.IncidentPage(ConfigurationManager.AppSettings["IncidentPage"]);
-
-            goTo.IncidentPageTask(ConfigurationManager.AppSettings["IncidentPageForOper"]);
-            //incidentPage.CreateTask();
-            //incidentPage.NameOfTask();
-            //incidentPage.SaveTaskWithOutFrame();
-            test.Log(Status.Pass, "Test Pass");
-
-
-            System.Threading.Thread.Sleep(10000);
-        }
-
-
-
-
-            [TearDown]
-        public void stop()
-        {
+            if (status == TestStatus.Failed)
+            {
+                test.Log(LogStatus.Fail, stackTrace + errorMessage);
+            }
+            extent.EndTest(test);
             driver.Quit();
             driver = null;
+
         }
+
         [OneTimeTearDown]
         public void ExtentClose()
         {
             extent.Flush();
+            extent.Close();
         }
     }
 }
-*/
