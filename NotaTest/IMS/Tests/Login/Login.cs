@@ -83,7 +83,7 @@ namespace NotaTest.IMS.Login
 
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_PASSWORD']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n3!';", element);
+            jse.ExecuteScript("arguments[0].value='Abt8v@~Z0n31!';", element);
         }
 
 
@@ -107,7 +107,7 @@ namespace NotaTest.IMS.Login
         {
             IWebElement element = driver.FindElement(By.CssSelector("input[name='USER_LOGIN']"));
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].value='devnull@opdr.ru';", element);
+            jse.ExecuteScript("arguments[0].value='devnullsogl';", element);
         }
 
         public void InputPwdOperReg()
