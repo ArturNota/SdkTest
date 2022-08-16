@@ -84,7 +84,7 @@ namespace NotaTest.IMS.PageObjects
         public void LevelOfIncidentInputValue()
         {
 
-            IWebElement element = driver.FindElement(By.CssSelector("body > div:nth-child(20) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)"));
+            IWebElement element = driver.FindElement(By.CssSelector("span[id='UF_LEVEL_control_'] span:nth-child(1)"));
             Actions action = new Actions(driver);
 
             action.MoveToElement(element).Click().Build().Perform();
